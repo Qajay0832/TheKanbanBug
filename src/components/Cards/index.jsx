@@ -3,7 +3,7 @@ import "./styles.css";
 import Done from "../../assests/Done.png";
 import Right from "../../assests/Right.png";
 import Delete from "../../assests/Delete.png";
-import Edit from "../../assests/Edit.png";
+import Edit from "../../assests/edit.png";
 
 function Cards({ title, deadline, status, priority, desc, id,MoveTodo,DeleteTodo,openEditModal}) {
 
