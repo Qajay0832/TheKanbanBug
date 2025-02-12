@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route ,Navigate} from "react-router-dom";
-import Login from "./pages/login/login";
-import Todo from "./pages/todoList/todo";
+import Login from "./pages/login/Login.jsx";
+import Todo from "./pages/todoList/Todo.jsx";
 
 const RouteComponent = () => {
   const token = sessionStorage.getItem('authToken');

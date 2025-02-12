@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./todo.css";
-import Input from "../../components/Input";
-import Button from "../../components/Button";
-import Cards from "../../components/Cards";
+import Button from "../../components/Button/index.jsx";
+import Cards from "../../components/Cards/index.jsx";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import Modal from "../../components/AddTodoModal";
-import EditModal from "../../components/EditTodoModal";
+import Modal from "../../components/AddTodoModal/index.jsx";
+import EditModal from "../../components/EditTodoModal/index.jsx";
 
 const Todo = () => {
   const [isModalOpen, setModalOpen] = useState(false);

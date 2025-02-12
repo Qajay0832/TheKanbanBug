@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
-import Input from "../Input";
-import Button from "../Button";
-import { toast } from "react-toastify";
+import Button from "../Button/index.jsx";
 
 const EditModal = ({
   isOpen,
