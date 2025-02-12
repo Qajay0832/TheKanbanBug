@@ -13,6 +13,8 @@ function Login() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [loginForm, setLoginForm] = useState(true);
+  const emailRegex=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+  const passwordRegex=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
   const navigate = useNavigate();
   const token = sessionStorage.getItem("authToken");
   useEffect(() => {
@@ -53,6 +55,14 @@ function Login() {
       password !== "" &&
       confirmPassword !== ""
     ) {
+      if(!emailRegex.test(email)){
+        toast.error("Please enter a valid username foreg example@example.com")
+        return ;
+      }
+      if(!passwordRegex.test(password)){
+        toast.error("Please enter a valid Password Must be minuimum length of 8 . At least one lowercase letter. At least one uppercase letter. At least one digit. At least one special character .")
+        return ;
+      }
       setLoading(true);
       if (password === confirmPassword) {
         try {
@@ -69,36 +79,11 @@ function Login() {
             setPassword("");
             setLoginForm(true)
             toast.success("Successfully created user ! Please Login !");
-            // createDoc(user)
-            // navigate("/dashboard");
           }
         } catch (error) {
           setLoading(false);
           toast.error(error.response.data);
         }
-
-        // createUserWithEmailAndPassword( email, password)
-        //   .then((userCredential) => {
-        //     // Signed up
-        //     // const user = userCredential.user;
-        //     // console.log(user);
-        //     // toast.success("user created successfully!")
-        //     setLoading(false)
-        //     setName("");
-        //     setEmail("")
-        //     setConfirmPassword("")
-        //     setPassword("")
-        //     // createDoc(user)
-        //     navigate('/dashboard')
-        //     // ...
-        //   })
-        //   .catch((error) => {
-        //     const errorCode = error.code;
-        //     const errorMessage = error.message;
-        //     // toast.error(errorMessage)
-        //     setLoading(false)
-        //     // ..
-        //   });
       } else {
         toast.error("password and confirm password don't match!");
         setLoading(false);

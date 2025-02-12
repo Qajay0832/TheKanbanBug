@@ -97,16 +97,14 @@ const Todo = () => {
           token: token,
           id: id,
           status: status,
-          targetStatus:targetStatus
+          targetStatus: targetStatus,
         }
       );
       if (shiftTodo) {
         setTodoList(() => {
           return { ...shiftTodo.data };
         });
-        toast.success(
-          `Moved Todo to ${status == "todo" ? "In Progress" : "Completed"}`
-        );
+        toast.success(`Moved Todo to ${targetStatus}`);
       }
     } catch (error) {
       console.log(error);
@@ -120,6 +118,15 @@ const Todo = () => {
       navigate("/");
     }
     try {
+      if (
+        taskName.length == 0 ||
+        taskDesc.length == 0 ||
+        priority.length == 0 ||
+        date.length == 0
+      ) {
+        toast.error("Please fill required  details");
+        return;
+      }
       const todoposted = await axios.post(
         "https://thekanbanbugbackend.onrender.com/createtodo",
         {
@@ -152,6 +159,17 @@ const Todo = () => {
       navigate("/");
     }
     try {
+      if (
+        taskName.length == 0 ||
+        taskDesc.length == 0 ||
+        priority.length == 0 ||
+        status.length == 0 ||
+        id.length == 0 ||
+        date.length == 0
+      ) {
+        toast.error("Please fill required  details");
+        return;
+      }
       const editedTodo = await axios.post(
         "https://thekanbanbugbackend.onrender.com/edit",
         {
@@ -194,7 +212,7 @@ const Todo = () => {
     const token = e.dataTransfer.getData("token");
 
     if (sourceStatus === targetStatus) return;
-    MoveTodo(token,draggedCardId,sourceStatus,targetStatus)
+    MoveTodo(token, draggedCardId, sourceStatus, targetStatus);
   };
 
   return (
@@ -248,7 +266,9 @@ const Todo = () => {
                     priority={item.priority}
                     deadline={item.deadline}
                     id={item._id}
-                    MoveTodo={() => MoveTodo(token, item._id, item.status,'inProgress')}
+                    MoveTodo={() =>
+                      MoveTodo(token, item._id, item.status, "inProgress")
+                    }
                     DeleteTodo={() => DeleteTodo(token, item._id, item.status)}
                   />
                 );
@@ -277,7 +297,9 @@ const Todo = () => {
                     id={item._id}
                     setTodoList={setTodoList}
                     todoList={todoList}
-                    MoveTodo={() => MoveTodo(token, item._id, item.status,'completed')}
+                    MoveTodo={() =>
+                      MoveTodo(token, item._id, item.status, "completed")
+                    }
                     DeleteTodo={() => DeleteTodo(token, item._id, item.status)}
                   />
                 );
@@ -306,7 +328,9 @@ const Todo = () => {
                     id={item._id}
                     setTodoList={setTodoList}
                     todoList={todoList}
-                    MoveTodo={() => MoveTodo(token, item._id, item.status,'completed')}
+                    MoveTodo={() =>
+                      MoveTodo(token, item._id, item.status, "completed")
+                    }
                     DeleteTodo={() => DeleteTodo(token, item._id, item.status)}
                   />
                 );
