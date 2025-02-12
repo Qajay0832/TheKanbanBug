@@ -1,0 +1,83 @@
+.my-card {
+    padding: 0.5rem 1rem;
+    box-shadow: var(--shadow);
+    margin: 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: white;
+}
+
+.phigh {
+    background-color: #FF033E;
+}
+
+.pmedium {
+    background-color: #FFAC1C;
+}
+
+.plow {
+    background-color: #FFEA00;
+}
+
+.card-completed {
+    background-color: #66FF00;
+}
+
+
+.card-title {
+    margin: 0px !important;
+    font-weight: 600;
+    
+}
+
+.headerContent {
+    font-size: small;
+    font-weight: 400;
+}
+
+.my-card p {
+    margin: 0;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardHeaderContent {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.card-desc {
+    text-align: start;
+}
+
+.my-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.imgButtonContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 1rem;
+    align-items: center;
+}
+
+.imgBtn {
+    height: 1.5rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+}
+.imgNone{
+    display: none;
+}
+
+.imgBtn:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
