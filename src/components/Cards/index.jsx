@@ -5,11 +5,25 @@ import Right from "../../assests/Right.png";
 import Delete from "../../assests/Delete.png";
 import Edit from "../../assests/edit.png";
 
-function Cards({ title, deadline, status, priority, desc, id,MoveTodo,DeleteTodo,openEditModal}) {
-
+function Cards({
+  title,
+  deadline,
+  status,
+  priority,
+  desc,
+  id,
+  MoveTodo,
+  DeleteTodo,
+  openEditModal,
+  handleDragStart,
+  token,
+}) {
+  
   return (
     <div
       id={id}
+      draggable
+      onDragStart={(e) => handleDragStart(e, id, token, status)}
       className={`my-card ${
         status == "completed"
           ? "card-completed"
@@ -41,13 +55,7 @@ function Cards({ title, deadline, status, priority, desc, id,MoveTodo,DeleteTodo
           className="imgBtn"
           onClick={DeleteTodo}
         />
-        <img
-          src={Edit}
-          alt="Edit"
-          className="imgBtn"
-          onClick={openEditModal}
-        />
-
+        <img src={Edit} alt="Edit" className="imgBtn" onClick={openEditModal} />
       </div>
     </div>
   );
