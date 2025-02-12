@@ -15,11 +15,11 @@ function Login() {
   const [loginForm, setLoginForm] = useState(true);
   const navigate = useNavigate();
   const token = sessionStorage.getItem("authToken");
-  // useEffect(() => {
-  //   if (token) {
-  //     navigate("/dashboard");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (token) {
+      navigate("/dashboard");
+    }
+  }, []);
 
   async function loginWithEmail() {
     if (email !== "" && password !== "") {
@@ -34,6 +34,7 @@ function Login() {
           setLoading(false);
           setEmail("");
           setPassword("");
+          navigate('/dashboard');
           toast.success("Successfully Logged In !");
         }
       } catch (error) {
@@ -66,6 +67,7 @@ function Login() {
             setEmail("");
             setConfirmPassword("");
             setPassword("");
+            setLoginForm(true)
             toast.success("Successfully created user ! Please Login !");
             // createDoc(user)
             // navigate("/dashboard");
