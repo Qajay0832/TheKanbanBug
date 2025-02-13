@@ -26,7 +26,7 @@ const Todo = () => {
   };
 
   const closeEditModal = () => {
-    setEditModalGetter({}); //due to this if the modal closes the data did not change
+    setEditModalGetter({}); //due to this data refreshes if the modal closes.
     setEditModalOpen(false);
   };
   const navigate = useNavigate();
@@ -37,7 +37,6 @@ const Todo = () => {
   });
   const token = sessionStorage.getItem("authToken");
   const fetchTodo = async (token) => {
-    // console.log(token);
     try {
       const tododata = await axios.get(
         "https://thekanbanbugbackend.onrender.com/todo",

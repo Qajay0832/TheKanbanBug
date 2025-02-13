@@ -4,7 +4,7 @@ import Input from "../Input/index.jsx";
 import Button from "../Button/index.jsx";
 import { toast } from "react-toastify";
 
-const Modal = ({ isOpen, closeModal, AddTodo, type, status }) => {
+const Modal = ({ isOpen, closeModal, AddTodo}) => {
   const handleClickOutside = (e) => {
     if (e.target.classList.contains("modal-overlay")) {
       closeModal();

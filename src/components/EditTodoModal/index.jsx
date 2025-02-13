@@ -6,10 +6,7 @@ const EditModal = ({
   isOpen,
   closeModal,
   EditTodo,
-  type,
-  // GetTodo,
   editModalGetter,
-  // editModalContent,
 }) => {
   const handleClickOutside = (e) => {
     if (e.target.classList.contains("modal-overlay")) {
@@ -27,30 +24,12 @@ const EditModal = ({
     }-${new Date().getDate()}`
   );
   const [priority, setPriority] = useState("high");
-  // const CreateTodo = () => {
-  //   if (taskDesc.length != 0 || taskName.length != 0) {
-  //     AddTodo(taskName, taskDesc, date, priority);
-  //     setTaskName("");
-  //     setTaskDesc("");
-  //     setDate(
-  //       `${new Date().getFullYear()}-${
-  //         (new Date().getMonth() + 1).length === 1
-  //           ? new Date().getMonth() + 1
-  //           : "0" + (new Date().getMonth() + 1)
-  //       }-${new Date().getDate()}`
-  //     );
-  //     setPriority("high");
-  //   } else {
-  //     toast.error("taskname and description is required !");
-  //   }
-  // };
   useEffect(() => {
     setTaskName(editModalGetter.title);
     setTaskDesc(editModalGetter.desc);
     setPriority(editModalGetter.priority);
     setDate(editModalGetter.deadline);
     setStatus(editModalGetter.status);
-    console.log(editModalGetter.status);
   }, [editModalGetter._id]);
   return (
     <>
