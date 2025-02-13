@@ -50,6 +50,7 @@ const EditModal = ({
     setPriority(editModalGetter.priority);
     setDate(editModalGetter.deadline);
     setStatus(editModalGetter.status);
+    console.log(editModalGetter.status);
   }, [editModalGetter._id]);
   return (
     <>

@@ -26,7 +26,7 @@ const Todo = () => {
   };
 
   const closeEditModal = () => {
-    // setEditModalGetter({}); //due to this if the modal closes the data did not change
+    setEditModalGetter({}); //due to this if the modal closes the data did not change
     setEditModalOpen(false);
   };
   const navigate = useNavigate();
